@@ -1,5 +1,10 @@
 {
   "version": "1.0",
+  "general": {
+    "languages": ["zh", "en"],
+    "default_language": "zh",
+    "prompt_language": "zh"
+  },
   "ai": {
     "provider": "openai",
     "model": "glm-4",
