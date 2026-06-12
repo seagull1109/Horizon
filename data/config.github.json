@@ -2,7 +2,7 @@
   "version": "1.0",
   "ai": {
     "provider": "openai",
-    "model": "glm-4 / glm-3-turbo",
+    "model": "glm-4",
     "base_url": "https://open.bigmodel.cn/api/paas/v1",
     "api_key_env": "ZHIPU_API_KEY",
     "temperature": 0.3,
@@ -124,8 +124,8 @@
     "delivery": "summary",
     "overview_position": "first",
     "platform": "generic",
-    "layout": "text",
-    "fallback_layout": "text",
+    "layout": "markdown",
+    "fallback_layout": "markdown",
     "languages": null,
     "request_body": "#{result}\n#{summary}",
     "headers": "Content-Type: text/plain"
