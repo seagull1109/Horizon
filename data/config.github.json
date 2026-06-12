@@ -120,7 +120,7 @@
   },
   "webhook": {
     "enabled": true,
-    "url_env": "DINGTALK_WEBHOOK_URL",
+    "url_env": "DINGTALK_WEBHOOK",
     "delivery": "summary",
     "overview_position": "first",
     "platform": "generic",
