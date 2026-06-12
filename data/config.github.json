@@ -3,11 +3,11 @@
   "ai": {
     "provider": "openai",
     "model": "glm-4",
-    "base_url": "https://open.bigmodel.cn/api/paas/v1",
+    "base_url": "https://open.bigmodel.cn/api/paas/v4",
     "api_key_env": "ZHIPU_API_KEY",
     "temperature": 0.3,
     "max_tokens": 4096,
-    "throttle_sec": 0,
+    "throttle_sec": 1,
     "analysis_concurrency": 1,
     "enrichment_concurrency": 1
   },
@@ -67,19 +67,12 @@
           "min_score": 50
         }
       ],
-      "users": [
-        {
-          "username": "iamthatis",
-          "enabled": true,
-          "sort": "new",
-          "fetch_limit": 10
-        }
-      ],
+      "users": [],
       "fetch_comments": 5
     },
     "twitter": {
       "enabled": false,
-      "users": ["karpathy", "ylecun"],
+      "users": [],
       "fetch_limit": 10,
       "fetch_reply_text": false,
       "max_replies_per_tweet": 3,
@@ -90,16 +83,7 @@
       "enabled": false,
       "fetch_filings": false,
       "filings_provider": "sec",
-      "watchlists": [
-        {
-          "name": "megacaps",
-          "enabled": true,
-          "provider": "yfinance",
-          "fetch_limit": 20,
-          "category": "equities",
-          "symbols": ["AAPL", "MSFT", "NVDA", "GOOGL", "AMZN", "META", "TSLA"]
-        }
-      ]
+      "watchlists": []
     },
     "ossinsight": {
       "enabled": false,
