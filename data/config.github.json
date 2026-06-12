@@ -124,16 +124,10 @@
     "delivery": "summary",
     "overview_position": "first",
     "platform": "generic",
-    "layout": "markdown",
-    "fallback_layout": "markdown",
+    "layout": "text",
+    "fallback_layout": "text",
     "languages": null,
-    "request_body": {
-      "msgtype": "markdown",
-      "markdown": {
-        "title": "Horizon Daily Summary",
-        "text": "### Horizon生成结果: #{result}\n**重要资讯数量**: #{important_items}/#{all_items}\n\n---\n\n#{summary}"
-      }
-    },
-    "headers": "Content-Type: application/json"
+    "request_body": "#{result}\n#{summary}",
+    "headers": "Content-Type: text/plain"
   }
 }
