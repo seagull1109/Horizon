@@ -76,7 +76,7 @@
       "fetch_comments": 5
     },
     "twitter": {
-      "enabled": false,
+      "enabled": true,
       "users": [],
       "fetch_limit": 10,
       "fetch_reply_text": false,
@@ -85,13 +85,13 @@
       "reply_min_likes": 5
     },
     "openbb": {
-      "enabled": false,
+      "enabled": true,
       "fetch_filings": false,
       "filings_provider": "sec",
       "watchlists": []
     },
     "ossinsight": {
-      "enabled": false,
+      "enabled": true,
       "period": "past_24_hours",
       "languages": ["All", "Python", "TypeScript"],
       "keywords": [],
