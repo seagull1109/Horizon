@@ -66,6 +66,22 @@
           "time_filter": "day",
           "fetch_limit": 15,
           "min_score": 50
+        },
+        {
+          "subreddit": "technology",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "min_score": 50
+        },
+        {
+          "subreddit": "Futurology",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "min_score": 50
         }
       ],
       "users": [],
@@ -73,7 +89,7 @@
     },
     "twitter": {
       "enabled": true,
-      "users": [],
+      "users": ["WSJmarkets", "LizAnnSonders", "morganhousel", "ritholtz"],
       "fetch_limit": 10,
       "fetch_reply_text": false,
       "max_replies_per_tweet": 3,
