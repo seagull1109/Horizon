@@ -1,10 +1,5 @@
 {
   "version": "1.0",
-  "general": {
-    "languages": ["zh", "en"],
-    "default_language": "zh",
-    "prompt_language": "zh"
-  },
   "ai": {
     "provider": "openai",
     "model": "glm-4",
@@ -14,7 +9,8 @@
     "max_tokens": 4096,
     "throttle_sec": 1,
     "analysis_concurrency": 1,
-    "enrichment_concurrency": 1
+    "enrichment_concurrency": 1,
+    "languages": ["en", "zh"]
   },
   "email": {
     "enabled": false,
