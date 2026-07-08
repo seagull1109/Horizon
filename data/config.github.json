@@ -127,7 +127,7 @@
     "platform": "generic",
     "layout": "markdown",
     "fallback_layout": "markdown",
-    "languages": ["zh", "en"],
+    "languages": ["zh"],
     "request_body": "#{result}\n#{summary}",
     "headers": "Content-Type: text/plain"
   }
