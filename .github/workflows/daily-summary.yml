@@ -2,7 +2,7 @@ name: Daily Horizon Summary
 
 on:
   schedule:
-     - cron: '45 11 * * *'  
+     - cron: '45 07 * * *'  
  
   workflow_dispatch:      # Allow manual trigger
 
