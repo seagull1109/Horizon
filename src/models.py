@@ -283,6 +283,9 @@ class WebhookConfig(BaseModel):
     url_env: Optional[str] = (
         None  # Environment variable name containing the webhook URL
     )
+    secret_env: Optional[str] = (
+        None  # Env var holding the DingTalk signing secret (platform="dingtalk")
+    )
     request_body: Optional[Union[str, dict, list]] = (
         None  # POST body: real JSON object or string with #{key} placeholders; if empty, will use GET
     )
