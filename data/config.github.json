@@ -122,13 +122,14 @@
   "webhook": {
     "enabled": true,
     "url_env": "DINGTALK_WEBHOOK",
+    "secret_env": "DINGTALK_SECRET",
     "delivery": "summary",
     "overview_position": "first",
-    "platform": "generic",
+    "platform": "dingtalk",
     "layout": "markdown",
     "fallback_layout": "markdown",
     "languages": ["zh"],
-    "request_body": "#{result}\n#{summary}",
-    "headers": "Content-Type: text/plain"
+    "request_body": {"msgtype": "markdown", "markdown": {"title": "#{message_title}", "text": "#{summary}"}},
+    "headers": "Content-Type: application/json"
   }
 }
