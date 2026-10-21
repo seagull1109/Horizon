@@ -1,10 +1,14 @@
 """Webhook notification service for Horizon."""
 
+import base64
+import hashlib
+import hmac
 import json
 import logging
 import os
 import re
-from urllib.parse import urlsplit, urlunsplit
+import time
+from urllib.parse import quote_plus, urlsplit, urlunsplit
 from datetime import datetime, timezone
 from typing import Any, List, Optional, Union, cast
 from urllib.parse import urlparse
@@ -306,6 +310,7 @@ class WebhookNotifier:
     ) -> tuple[str, str | None, dict[str, str]]:
         """Render the final request URL, body, and headers for the given variables."""
         request_url = cast(str, _render(self.url or "", variables))
+        request_url = self._apply_dingtalk_sign(request_url)
 
         content_type = "application/x-www-form-urlencoded"
         body_content = None
@@ -330,6 +335,40 @@ class WebhookNotifier:
         headers = _extract_headers(self.config.headers)
         headers["Content-Type"] = content_type
         return request_url, body_content, headers
+
+    def _apply_dingtalk_sign(self, url: str) -> str:
+        """Append DingTalk robot signing params (timestamp + sign) to *url*.
+
+        Active only when platform is "dingtalk" and the env var named by
+        config.secret_env holds the robot's SEC secret. HMAC-SHA256 over
+        "<timestamp>\n<secret>", base64-encoded and URL-quoted, as DingTalk
+        documents for custom robots with sign security enabled.
+        """
+        if getattr(self.config, "platform", "generic") != "dingtalk":
+            return url
+        secret_env = getattr(self.config, "secret_env", None)
+        if not secret_env:
+            return url
+        secret = os.getenv(secret_env)
+        if not secret:
+            logger.warning(
+                "DingTalk signing configured via %s but that env var is not "
+                "set; sending unsigned request.",
+                secret_env,
+            )
+            return url
+        timestamp = str(round(time.time() * 1000))
+        sign = quote_plus(
+            base64.b64encode(
+                hmac.new(
+                    secret.encode("utf-8"),
+                    f"{timestamp}\n{secret}".encode("utf-8"),
+                    hashlib.sha256,
+                ).digest()
+            )
+        )
+        separator = "&" if "?" in url else "?"
+        return f"{url}{separator}timestamp={timestamp}&sign={sign}"
 
     def _can_use_feishu_collapsible(self) -> bool:
         """Return whether this notifier should render Feishu collapsible cards."""
